@@ -1,0 +1,169 @@
+:host {
+  display: block;
+}
+
+.header {
+  height: 60px;
+  padding: 0 7.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8eb;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  text-decoration: none;
+}
+
+/* Cricket ball */
+
+.brand-ball {
+  position: relative;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: #0d0c22;
+
+  box-shadow: 0 5px 14px rgba(13, 12, 34, 0.15);
+
+  overflow: hidden;
+}
+
+.brand-ball span {
+  position: absolute;
+
+  width: 70px;
+  height: 18px;
+
+  border-top: 2px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 50%;
+
+  transform: rotate(-55deg);
+}
+
+.brand-ball span:first-child {
+  left: -10px;
+  top: 8px;
+}
+
+.brand-ball span:last-child {
+  left: -5px;
+  top: 17px;
+}
+
+/* Brand name */
+
+.brand-name {
+  color: #0d0c22;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  letter-spacing: 0.32em;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-button {
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #ea4c89;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-button:hover {
+  background: #d93673;
+  transform: scale(1.05);
+}
+
+.search-icon {
+  width: 14px;
+  height: 14px;
+
+  border: 2px solid #ffffff;
+
+  border-radius: 50%;
+
+  position: relative;
+  display: block;
+}
+
+.search-icon::after {
+  content: "";
+
+  position: absolute;
+
+  width: 8px;
+  height: 2px;
+
+  background: #ffffff;
+
+  right: -6px;
+  bottom: -4px;
+
+  transform: rotate(48deg);
+
+  border-radius: 3px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .header {
+    height: 60px;
+    padding: 0 20px;
+  }
+
+  .brand {
+    gap: 12px;
+  }
+
+  .brand-ball {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-name {
+    font-size: 19px;
+    letter-spacing: 0.25em;
+  }
+
+  .search-button {
+    width: 38px;
+    height: 38px;
+  }
+}

@@ -1,0 +1,81 @@
+$navy: #0d0c22;
+$pink: #ea4c89;
+$pink-dark: #d93673;
+$pink-soft: #fbe3ed;
+$border: #e8e8eb;
+
+:host { position:absolute; inset:0; pointer-events:none; z-index:2; }
+
+.decor { position:absolute; inset:0; overflow:hidden; }
+
+.stadium-left, .stadium-right {
+  position:absolute; width:50vw; height:230px;
+  bottom:-120px; border-radius:50% 50% 0 0;
+  border-top:35px solid $pink-soft;
+  transform:rotate(5deg);
+}
+.stadium-left { left:-12vw; }
+.stadium-right { right:-12vw; transform:rotate(-5deg); }
+
+.bat {
+  position:absolute; left:2.5%; bottom:25px;
+  width:130px; height:390px; transform:rotate(-34deg);
+}
+.handle {
+  position:absolute; top:0; left:50px;
+  width:31px; height:150px; border-radius:18px;
+  background:linear-gradient(90deg, $navy, $pink-dark);
+}
+.blade {
+  position:absolute; left:25px; top:105px;
+  width:80px; height:275px;
+  border-radius:22px 22px 32px 32px;
+  background:linear-gradient(90deg, #f8f8fa, #fff 35%, $pink-soft);
+  border:5px solid $pink;
+  border-top-width:8px;
+}
+.ball {
+  position:absolute; left:12%; bottom:55px;
+  width:78px; height:78px; border-radius:50%;
+  background:$pink;
+  box-shadow:0 12px 25px rgba(234, 76, 137, .24);
+}
+.ball::before, .ball::after {
+  content:""; position:absolute; height:55px; width:18px;
+  border-right:2px dashed #fff; border-radius:50%;
+  transform:rotate(-28deg); top:10px;
+}
+.ball::before { left:24px; }
+.ball::after { left:32px; }
+
+.crick-score {
+  position:absolute; right:4.5%; bottom:20px;
+  width:150px; height:270px;
+  display:flex; justify-content:center; gap:12px;
+}
+.crick-score i {
+  width:28px; height:225px; margin-top:25px;
+  border-radius:12px;
+  background:linear-gradient(90deg, $navy, $pink-dark);
+  box-shadow:0 10px 25px rgba(13, 12, 34, .18);
+}
+.crick-score b {
+  position:absolute; top:0; width:55px; height:14px;
+  border-radius:8px; background:$pink;
+}
+.crick-score b:first-of-type { left:30px; }
+.crick-score b:last-of-type { right:30px; }
+
+.floodlight {
+  position:absolute; right:2%; top:105px;
+  width:55px; display:flex; flex-wrap:wrap; gap:5px;
+  opacity:.18;
+}
+.floodlight span { width:12px; height:12px; border-radius:50%; background:$pink; }
+
+@media (max-width:700px) {
+  .bat { left:-12%; transform:scale(.65) rotate(-34deg); bottom:-5px; }
+  .ball { left:9%; bottom:20px; width:50px; height:50px; }
+  .crick-score { right:-8%; transform:scale(.7); transform-origin:bottom right; }
+  .floodlight { display:none; }
+}

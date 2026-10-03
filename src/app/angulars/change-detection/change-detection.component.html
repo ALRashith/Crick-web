@@ -1,0 +1,114 @@
+<article class="change-detection-guide">
+  <header class="guide-header">
+    <p class="eyebrow">Angular interview preparation</p>
+    <h1>Change detection</h1>
+    <p class="intro">
+      Change detection is Angular's process for checking component state and updating the
+      DOM when that state changes.
+    </p>
+  </header>
+
+  <section class="interview-answer">
+    <strong>Interview answer</strong>
+    <p>
+      Change detection is how Angular notices that a TypeScript value changed and then
+      updates the matching HTML. For example, after a button changes the component's
+      <code>count</code> value, Angular checks the view and renders the new value on screen.
+    </p>
+  </section>
+
+  <section class="how-it-works">
+    <h2>Think of it as a three-step cycle</h2>
+    <ol>
+      <li><strong>An event happens:</strong> a click, timer, HTTP response, or input change.</li>
+      <li><strong>Angular checks:</strong> it compares the component values used by the template.</li>
+      <li><strong>The screen updates:</strong> Angular changes only the DOM values that are different.</li>
+    </ol>
+    <p class="plain-example">
+      <strong>Example:</strong> clicking “Increase” changes <code>count</code> from 0 to 1.
+      Angular sees the event, checks the binding, and renders 1 instead of 0.
+    </p>
+  </section>
+
+  <section class="samples">
+    <article class="sample-card">
+      <div class="sample-heading">
+        <span class="sample-number">01</span>
+        <div>
+          <p class="sample-label">Default strategy</p>
+          <h2>Simple state updates</h2>
+        </div>
+      </div>
+      <p>
+        Angular uses the default strategy unless another strategy is selected. It checks
+        the component tree after events and asynchronous work, which is convenient but
+        can do more checking than a large application needs.
+      </p>
+      <button type="button" (click)="incrementDefault()">Increase: {{ defaultCount }}</button>
+      <p class="result">The template value is now <strong>{{ defaultCount }}</strong>.</p>
+      <pre><code>count = 0;
+
+increment(): void &#123;
+  this.count++;
+&#125;</code></pre>
+  <p class="when-to-use"><strong>Use when:</strong> you want Angular to handle updates automatically with minimal configuration.</p>
+    </article>
+
+    <article class="sample-card featured-sample">
+      <div class="sample-heading">
+        <span class="sample-number">02</span>
+        <div>
+          <p class="sample-label">OnPush strategy</p>
+          <h2>Prefer immutable updates</h2>
+        </div>
+      </div>
+      <p>
+        <code>OnPush</code> improves performance by narrowing checks. With input objects,
+        replace the reference instead of mutating the existing object. A new reference
+        tells Angular that the input changed.
+      </p>
+      <button type="button" (click)="incrementOnPush()">Increase: {{ onPushCount }}</button>
+      <p class="result">This demo value is now <strong>{{ onPushCount }}</strong>.</p>
+      <pre><code>&#64;Component(&#123;
+  changeDetection: ChangeDetectionStrategy.OnPush
+&#125;)
+export class CardComponent &#123;
+  user = &#123; name: 'Asha' &#125;;
+
+  rename(): void &#123;
+    this.user = &#123; ...this.user, name: 'Maya' &#125;;
+  &#125;
+&#125;</code></pre>
+  <p class="when-to-use"><strong>Use when:</strong> you want predictable checks and better performance in reusable components.</p>
+    </article>
+
+    <article class="sample-card">
+      <div class="sample-heading">
+        <span class="sample-number">03</span>
+        <div>
+          <p class="sample-label">Manual control</p>
+          <h2>Detect only when needed</h2>
+        </div>
+      </div>
+      <p>
+        Inject <code>ChangeDetectorRef</code> when a specialized workflow needs explicit
+        control. <code>detectChanges()</code> checks this view immediately after your code
+        changes a value.
+      </p>
+      <button type="button" (click)="incrementManual()">Detect now: {{ manualCount }}</button>
+      <p class="result">The manually checked value is <strong>{{ manualCount }}</strong>.</p>
+      <pre><code>constructor(private cdr: ChangeDetectorRef) &#123;&#125;
+
+updateView(): void &#123;
+  this.value++;
+  this.cdr.detectChanges();
+&#125;</code></pre>
+  <p class="when-to-use"><strong>Use when:</strong> you intentionally control when a view is checked, such as a high-frequency update.</p>
+    </article>
+  </section>
+
+  <aside class="tip">
+    <strong>Key tradeoff</strong>
+    <span>Use OnPush by default for predictable, efficient components. Be careful with direct mutation because the object reference does not change.</span>
+  </aside>
+</article>
