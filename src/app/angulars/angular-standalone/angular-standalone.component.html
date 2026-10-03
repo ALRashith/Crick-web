@@ -1,0 +1,56 @@
+<article class="standalone-guide">
+  <header class="guide-header">
+    <p class="eyebrow">Interview preparation</p>
+    <h1>Why develop with standalone Angular?</h1>
+    <p class="intro">
+      Standalone components are Angular components that manage their own template
+      dependencies. They can be used without being declared in an NgModule.
+    </p>
+  </header>
+
+  <section class="guide-section">
+    <h2>The interview answer</h2>
+    <p>
+      Angular recommends this approach because it reduces module ceremony and makes a
+      component's dependencies explicit. The result is code that is easier to understand,
+      reuse, lazy-load, and test.
+    </p>
+
+    <pre><code>import &#123; Component &#125; from '&#64;angular/core';
+  import &#123; NgIf &#125; from '&#64;angular/common';
+
+&#64;Component(&#123;
+  selector: 'app-welcome',
+  standalone: true,
+  imports: [NgIf],
+  template: '&lt;p *ngIf="isVisible"&gt;Welcome!&lt;/p&gt;'
+&#125;)
+export class WelcomeComponent &#123;
+  isVisible = true;
+&#125;</code></pre>
+  </section>
+
+  <section class="guide-section benefits-section">
+    <h2>Why do developers use it?</h2>
+    <ul>
+      @for (benefit of benefits; track benefit) {
+        <li>{{ benefit }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="guide-section comparison-section">
+    <h2>Standalone vs. NgModules</h2>
+    <p>
+      With NgModules, components are declared in a module and dependencies are often
+      provided through that module. With standalone components, the component imports
+      what its own template needs. NgModules still work, so existing applications can
+      migrate gradually.
+    </p>
+  </section>
+
+  <aside class="tip">
+    <strong>Good closing point</strong>
+    <span>Standalone does not replace services, routing, or dependency injection. It changes how components are composed and organized.</span>
+  </aside>
+</article>

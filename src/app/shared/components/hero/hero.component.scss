@@ -1,0 +1,85 @@
+:host {
+  display: block;
+}
+
+.hero {
+  min-height: 430px;
+
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 35px;
+}
+
+/* =========================
+   MAIN HEADING
+========================= */
+
+h1 {
+  margin: 0;
+
+  color: #0d0c22;
+
+  font-size: clamp(56px, 5vw, 102px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 800;
+}
+
+/* Highlight */
+
+h1 span {
+  color: #ea4c89;
+}
+
+/* =========================
+   SUBTITLE
+========================= */
+
+p {
+  margin: 32px 0 0;
+
+  color: #585767;
+
+  font-size: 25px;
+
+  letter-spacing: 0.01em;
+
+  font-weight: 400;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: 310px;
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 13vw, 70px);
+  }
+
+  p {
+    font-size: 17px;
+    margin-top: 20px;
+  }
+}
