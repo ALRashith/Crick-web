@@ -43,5 +43,12 @@ export const routes: Routes = [
                         .then(c => c.MatchDetailsComponent)
             }
         ]
+    },
+    {
+        path: 'match-setup',
+        canActivate: [authGuard],
+        loadComponent: () =>
+            import('./features/match-setup/match-setup.component')
+                .then(c => c.MatchSetupComponent)
     }
 ];

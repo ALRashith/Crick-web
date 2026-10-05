@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { QuickNavComponent } from './quick-nav.component';
 
@@ -8,7 +9,8 @@ describe('QuickNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [QuickNavComponent]
+      imports: [QuickNavComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

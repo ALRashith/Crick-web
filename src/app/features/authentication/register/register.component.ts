@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/authentication/auth.service';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+    selector: 'app-register',
+    imports: [ReactiveFormsModule],
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   constructor(private readonly router: Router, private readonly auth: AuthService) { }
