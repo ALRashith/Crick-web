@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { ApiServiceService } from '../../../core/services/api-service.service';
 
 @Component({
-  selector: 'app-match-list',
-  standalone: true,
-  imports: [],
-  templateUrl: './match-list.component.html',
-  styleUrl: './match-list.component.scss'
+    selector: 'app-match-list',
+    imports: [],
+    templateUrl: './match-list.component.html',
+    styleUrl: './match-list.component.scss'
 })
 export class MatchListComponent {
 

@@ -5,10 +5,9 @@ import { QuickNavComponent } from '../../shared/components/quick-nav/quick-nav.c
 import { CrickscoreComponent } from '../../shared/components/crickscore/crickscore.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [HeaderComponent, QuickNavComponent, HeroComponent, CrickscoreComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [HeaderComponent, QuickNavComponent, HeroComponent, CrickscoreComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {}
